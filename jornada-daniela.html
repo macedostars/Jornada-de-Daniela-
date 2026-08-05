@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Jornada StarsPolaris — Daniela</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap');
+
+  :root {
+    --ink: #14231f;
+    --emerald-deep: #0e2b25;
+    --emerald: #163c33;
+    --ivory: #f4efe4;
+    --ivory-warm: #ede4d3;
+    --gold: #b8985a;
+    --gold-bright: #d4b878;
+    --rose: #c99b83;
+    --line: rgba(184, 152, 90, 0.35);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ivory);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* texture */
+  .grain {
+    position: fixed; inset: 0; pointer-events: none; z-index: 5; opacity: 0.035; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .hero {
+    background: radial-gradient(ellipse 120% 100% at 50% 0%, var(--emerald) 0%, var(--emerald-deep) 65%, #081c17 100%);
+    color: var(--ivory);
+    padding: 90px 24px 110px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 15% 20%, rgba(212,184,120,0.5), transparent),
+      radial-gradient(1px 1px at 75% 15%, rgba(212,184,120,0.4), transparent),
+      radial-gradient(1.5px 1.5px at 40% 65%, rgba(212,184,120,0.5), transparent),
+      radial-gradient(1px 1px at 85% 70%, rgba(212,184,120,0.3), transparent),
+      radial-gradient(1px 1px at 25% 85%, rgba(212,184,120,0.4), transparent);
+    opacity: 0.6;
+  }
+
+  .medallion {
+    position: relative; z-index: 2;
+    width: 108px; height: 108px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #1d4a3f, var(--emerald-deep));
+    border: 1.5px solid var(--gold);
+    margin: 0 auto 28px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 0 6px rgba(184,152,90,0.12), 0 12px 30px rgba(0,0,0,0.35);
+  }
+  .medallion img { width: 74px; height: 74px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4)); }
+
+  .eyebrow {
+    position: relative; z-index: 2;
+    font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 4px;
+    text-transform: uppercase; color: var(--gold-bright); margin-bottom: 22px;
+  }
+  h1 {
+    position: relative; z-index: 2;
+    font-family: 'Fraunces', serif; font-weight: 500; font-style: normal;
+    font-size: 52px; line-height: 1.08; margin: 0 0 20px; letter-spacing: -0.5px;
+    max-width: 620px; margin-left: auto; margin-right: auto;
+  }
+  h1 em { font-style: italic; font-weight: 400; color: var(--gold-bright); }
+  .hero-lead {
+    position: relative; z-index: 2;
+    font-size: 16.5px; line-height: 1.7; color: rgba(244,239,228,0.75);
+    max-width: 460px; margin: 0 auto; font-weight: 400;
+  }
+
+  .ornament {
+    position: relative; z-index: 2;
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    margin: 34px 0 0; color: var(--gold);
+  }
+  .ornament .rule { width: 60px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+  .ornament .diamond { width: 6px; height: 6px; transform: rotate(45deg); background: var(--gold-bright); }
+
+  .content { max-width: 680px; margin: 0 auto; padding: 0 24px 100px; }
+
+  .chapter {
+    margin-top: 76px;
+    position: relative;
+  }
+  .chapter-head {
+    display: flex; align-items: baseline; gap: 18px; margin-bottom: 6px;
+  }
+  .chapter-num {
+    font-family: 'Fraunces', serif; font-size: 15px; font-weight: 500; font-style: italic;
+    color: var(--gold); white-space: nowrap;
+  }
+  .chapter-title {
+    font-family: 'Fraunces', serif; font-size: 28px; font-weight: 500;
+    color: var(--emerald-deep); letter-spacing: -0.3px;
+  }
+  .chapter-sub {
+    font-size: 13.5px; color: #7a7266; margin: 0 0 28px 0; padding-left: 74px; line-height: 1.6;
+  }
+
+  .card {
+    background: var(--ivory-warm);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .mission {
+    display: grid; grid-template-columns: 1fr auto; gap: 4px 20px;
+    padding: 22px 26px;
+    border-bottom: 1px solid var(--line);
+  }
+  .mission:last-child { border-bottom: none; }
+  .mission-name {
+    font-family: 'Fraunces', serif; font-size: 17px; font-weight: 500; color: var(--ink);
+    grid-column: 1;
+  }
+  .mission-frente {
+    font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--rose);
+    grid-column: 1; margin-top: 4px;
+  }
+  .mission-valor {
+    font-family: 'Fraunces', serif; font-size: 17px; font-weight: 500; color: var(--emerald);
+    grid-column: 2; text-align: right; white-space: nowrap; align-self: center;
+  }
+  .mission-libera {
+    grid-column: 1 / -1; font-size: 12.5px; color: #8a8275; margin-top: 8px; line-height: 1.5;
+    font-style: italic;
+  }
+  .mission-libera::before { content: '✦ desbloqueia — '; color: var(--gold); font-style: normal; }
+
+  .placeholder-card {
+    background: transparent;
+    border: 1px dashed var(--line);
+    border-radius: 4px;
+    padding: 30px 26px;
+    text-align: center;
+    color: #9a9182;
+    font-size: 13.5px;
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  .closing {
+    margin-top: 90px;
+    padding: 40px 40px;
+    background: var(--emerald-deep);
+    color: var(--ivory);
+    border-radius: 4px;
+    text-align: center;
+  }
+  .closing h3 {
+    font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px; margin: 0 0 14px;
+    color: var(--gold-bright);
+  }
+  .closing p { font-size: 14px; line-height: 1.7; color: rgba(244,239,228,0.8); max-width: 460px; margin: 0 auto; }
+
+  footer {
+    text-align: center; padding: 40px 20px 60px;
+    font-size: 10.5px; letter-spacing: 2px; text-transform: uppercase; color: #b3a98f;
+  }
+
+  @media (max-width: 560px) {
+    h1 { font-size: 36px; }
+    .chapter-sub { padding-left: 0; }
+    .chapter-head { flex-direction: column; gap: 2px; }
+    .mission { grid-template-columns: 1fr; }
+    .mission-valor { grid-column: 1; text-align: left; margin-top: 6px; }
+  }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<div class="hero">
+  <div class="medallion"><img src="mascote.png" alt="Emblema StarsPolaris"></div>
+  <div class="eyebrow">Daniela Mires · Sócia Minoritária</div>
+  <h1>A Jornada<br><em>StarsPolaris</em></h1>
+  <p class="hero-lead">Um convite pessoal para atravessar, capítulo a capítulo, tudo o que o ecossistema
+  se torna — no seu ritmo, pelas suas escolhas.</p>
+  <div class="ornament"><div class="rule"></div><div class="diamond"></div><div class="rule"></div></div>
+</div>
+
+<div class="content">
+
+  <div class="chapter" style="margin-top: 56px;">
+    <div class="closing" style="background: var(--emerald); margin-top: 0;">
+      <h3>Para você, e para os seus</h3>
+      <p>Cada parte deste ecossistema foi pensada para durar além de uma tarefa concluída. O que
+      você constrói aqui carrega valor real — para o negócio que você é sócia majoritária, e para
+      quem depende de você. Seus filhos vão crescer plugados nesse mesmo mundo digital; o que você
+      decide, cria e domina aqui hoje é também o que fica pronto pra eles amanhã.</p>
+    </div>
+  </div>
+
+  <div class="chapter">
+    <div class="chapter-head">
+      <span class="chapter-num">Capítulo I</span>
+      <span class="chapter-title">v1.0 — O Ponto de Partida</span>
+    </div>
+    <p class="chapter-sub">O que já respira hoje, pronto para suas mãos.</p>
+    <div class="card">
+      <div class="mission">
+        <div class="mission-name">Publicar três reflexões no diário do ecossistema</div>
+        <div class="mission-frente">Conteúdo</div>
+        <div class="mission-valor">R$ 150–250</div>
+        <div class="mission-libera">acesso ao alcance real de cada publicação</div>
+      </div>
+      <div class="mission">
+        <div class="mission-name">Erguer e testar uma página de captação</div>
+        <div class="mission-frente">Marketing</div>
+        <div class="mission-valor">R$ 200–350</div>
+        <div class="mission-libera">visão da conversão, lead a lead</div>
+      </div>
+      <div class="mission">
+        <div class="mission-name">Compor uma linha visual para campanha</div>
+        <div class="mission-frente">Marca</div>
+        <div class="mission-valor">R$ 150–300</div>
+        <div class="mission-libera">papel de curadoria visual do ecossistema</div>
+      </div>
+      <div class="mission">
+        <div class="mission-name">Revisar e decidir sobre os pré-cadastros pendentes</div>
+        <div class="mission-frente">Operação</div>
+        <div class="mission-valor">R$ 100–200</div>
+        <div class="mission-libera">assento recorrente na fila de aprovação</div>
+      </div>
+      <div class="mission">
+        <div class="mission-name">Explorar o painel de métricas e trazer um achado</div>
+        <div class="mission-frente">Estratégia</div>
+        <div class="mission-valor">R$ 200–400</div>
+        <div class="mission-libera">visão ampliada do painel financeiro</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chapter">
+    <div class="chapter-head">
+      <span class="chapter-num">Capítulo II</span>
+      <span class="chapter-title">v2.0 — O Que Vem a Seguir</span>
+    </div>
+    <p class="chapter-sub">Memória que se torna história navegável. Detalhes revelados na chegada.</p>
+    <div class="placeholder-card">As missões deste capítulo serão escritas assim que a v2.0 estiver pronta e testada.</div>
+  </div>
+
+  <div class="chapter">
+    <div class="chapter-head">
+      <span class="chapter-num">Capítulo III</span>
+      <span class="chapter-title">v2.5 — Expansão</span>
+    </div>
+    <p class="chapter-sub">Novos conectores, novas automações.</p>
+    <div class="placeholder-card">As missões deste capítulo serão escritas assim que o escopo da v2.5 estiver fechado.</div>
+  </div>
+
+  <div class="chapter">
+    <div class="chapter-head">
+      <span class="chapter-num">Capítulo IV</span>
+      <span class="chapter-title">v2.7 — Inteligência</span>
+    </div>
+    <p class="chapter-sub">O ecossistema começa a antecipar, não só responder.</p>
+    <div class="placeholder-card">As missões deste capítulo serão escritas assim que o escopo da v2.7 estiver fechado.</div>
+  </div>
+
+  <div class="chapter">
+    <div class="chapter-head">
+      <span class="chapter-num">Capítulo V</span>
+      <span class="chapter-title">v3.0 — O Grande Salto</span>
+    </div>
+    <p class="chapter-sub">O que está sendo construído agora, em silêncio.</p>
+    <div class="placeholder-card">Reservado. Revelado quando chegar a hora.</div>
+  </div>
+
+  <div class="closing">
+    <h3>Como funciona</h3>
+    <p>Cada missão concluída é remunerada pela entrega, não pelo tempo. Como sócia, esse valor
+    é formalizado junto à contabilidade da Macedo Stars. Escolha uma de cada vez — não há ordem
+    certa, só o seu próprio caminho pelo ecossistema.</p>
+  </div>
+
+</div>
+
+<footer>StarsPolaris · Documento Pessoal</footer>
+
+</body>
+</html>
